@@ -29,3 +29,33 @@ jakarta.validation-api-2.0.2.jar
     + Tomcat - 服务器，提供JSP/Servlet相关容器类
     + Turbine - web应用快速开发框架
     + Velocity - 模板引擎
+
+```
+// 自定义注解校验
+
+// @Valid注解提供了内部类等复杂结构校验的基础
+
+// 使用脚本编写关联校验
+@ScriptAssert(lang = "javascript", script = "_this.value == null || (_this.value != null && _this.value1 !=null)", message = "条件判断:如果conditionNull不为空时,则conditionNotNull也不能为空")
+@ScriptAssert(lang = "javascript", script = "!_this.value2 || (_this.value > 5)", message = "基于某种条件的校验:value2要么为空,要么大于5")
+
+// hibernate，jackson，Java 都各自有定义一些基本的注解校验
+// 例如：hibernate的注释的适用范围，数字还是字符串，还是都可以；范围的大小，int支持范围的大小，还是long支持范围的大小；api看仔细了
+@Range(max = Long.MAX_VALUE, min = 0L)
+public long rangeNumber;
+// 例如：Jackson中的JsonAnyGetter和JsonAnySetter用于接受反序列化时json字符串中含有，但是java对象中没有的属性键值对
+@JsonAnyGetter
+public Map<String, Object> getOther() {
+    return other;
+}
+@JsonAnySetter
+public void setOther(String key, Object value) {
+    this.other.put(key, value);
+}
+// 例如：java的分组校验
+public String validationTest(@RequestBody @Validated({Update.class, Insert.class}) JavaValidationApi validationAPI){}
+@NotNull(groups = {Update.class, Insert.class})
+public String name;
+@NotBlank(groups = Update.class)
+public String gender;
+```
