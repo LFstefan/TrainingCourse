@@ -1,0 +1,1 @@
+g++ main.cpp Clazz.cpp practice.cpp -o result -std=c++11
