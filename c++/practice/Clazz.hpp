@@ -28,12 +28,14 @@ public:
 };
 
 // 模版类的函数必须和模版类声明写在一起
-template<typename T>
-T TemplateClazz<T>::accumulate(T t_value_1, T t_value_2){
-	return t_value_1 + t_value_2 + 100;
-}
+// template<typename T>
+// T TemplateClazz<T>::accumulate(T t_value_1, T t_value_2){
+// 	return t_value_1 + t_value_2 + 100;
+// }
 
-template<typename T>
-int TemplateClazz<T>::sum(){
-	return t_1 + t_2;
-}
+// template<typename T>
+// int TemplateClazz<T>::sum(){
+// 	return t_1 + t_2;
+// }
+
+#include "TemplateClazz.tpp"

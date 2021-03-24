@@ -1,4 +1,4 @@
-#include "Clazz.h"
+#include "Clazz.hpp"
 
 int Clazz::nextAge(){
 	return age + 1;
