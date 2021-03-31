@@ -38,4 +38,5 @@ public:
 // 	return t_1 + t_2;
 // }
 
+// 模版类的函数声明和实现分离实现方式，通过ipp/tpp文件分离具体实现
 #include "TemplateClazz.tpp"

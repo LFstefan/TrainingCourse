@@ -1,5 +1,5 @@
 #include <iostream>
-#include "practice.cpp"
+#include "practice.hpp"
 #include "Clazz.hpp"
 using namespace std;
 
@@ -15,6 +15,7 @@ int main()
     TemplateClazz<int> t_Clazz_1(8, 16);
 	thread_arg = 66L;
     cout << "Hello, world!" << endl;
+    func();
     cout << extern_int << endl;
     cout << "模版函数调用：" << compare(3, 5) << endl;
     cout << "模版函数调用：" << compare("123", "456") << endl;
