@@ -9,6 +9,11 @@ extern void func(void);
 
 thread_local long thread_arg;
 
+void oop_test(BaseClazz &baseClazz){
+	baseClazz.normalFunc("hello world");
+    baseClazz.virtualFunc(2, 6);
+}
+
 int main()
 {
 
@@ -38,5 +43,15 @@ int main()
     Sale_item sale_item_const = sale_item.get_const_my_self(2);
     sale_item_const.sale_name = "平台-3";
     cout << "sale_item的name值为：" << sale_item.sale_name << "; sale_item_const的name值为；" << sale_item_const.sale_name << endl;
+
+    BaseClazz baseClazz(2,4);
+    DerivedClazz derivedClazz(2,4,6,8);
+    // BaseClazz *baseClazz_1 = &derivedClazz;
+    BaseDerivedClazz baseDerivedClazz(2,4,6,8,"hello", "world");
+    // BaseClazz *baseClazz_2 = &baseDerivedClazz;
+    
+    oop_test(baseClazz);
+    oop_test(derivedClazz);
+    oop_test(baseDerivedClazz);
     return 0;
 }
