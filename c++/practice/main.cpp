@@ -2,6 +2,8 @@
 #include "practice.hpp"
 #include "Clazz.hpp"
 #include "sale_item.hpp"
+#include "VirtualClazz.hpp"
+
 using namespace std;
 
 extern int extern_int;
@@ -44,6 +46,7 @@ int main()
     sale_item_const.sale_name = "平台-3";
     cout << "sale_item的name值为：" << sale_item.sale_name << "; sale_item_const的name值为；" << sale_item_const.sale_name << endl;
 
+    // 虚函数练习
     BaseClazz baseClazz(2,4);
     DerivedClazz derivedClazz(2,4,6,8);
     // BaseClazz *baseClazz_1 = &derivedClazz;

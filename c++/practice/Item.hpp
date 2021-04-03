@@ -1,5 +1,10 @@
 #include<iostream>
 
+// #pragma once
+// 等效于 _Pragma("once")
+// #ifdef _MAIN_H
+// #define _MAIN_H
+
 struct Item
 {
     char *item_name;
@@ -11,7 +16,10 @@ struct Item
     double getTotalPrice();
 };
 
+// #endif
+
 // struct定义的类，函数实现暂时没办法分离到不同文件中
 double Item::getTotalPrice(){
     return item_num * item_price;
 }
+
