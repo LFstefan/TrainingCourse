@@ -1,1 +1,1 @@
-g++ main.cpp Clazz.cpp practice.cpp -o result -std=c++11
+g++ main.cpp Clazz.cpp practice.cpp VirtualClazz.cpp PureVirtualClazz.cpp TemplateClazz.tpp -o result -std=c++11

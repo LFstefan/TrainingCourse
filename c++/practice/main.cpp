@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include "practice.hpp"
 #include "Clazz.hpp"
 // #include "sale_item.hpp"
@@ -67,5 +68,24 @@ int main()
     Rectangle rec(6,7,8,9,"长方形");
     pure_virtual_test(square);
     pure_virtual_test(rec);
+
+    // lambda表达式练习
+    int arg = 6;
+    auto func1 = [arg] () mutable { return ++arg; };
+    auto func2 = [&arg] () { return ++arg; };
+    // 返回结果是条件表达式的时候，结果类型可以自动识别，无需显示指定，其他需要
+    // 和java的lambda相比，多了一个捕获列表（即方括号[arg...]）来引用所在函数中定义的局部变量
+    // 捕获列表的参数默认是不可变的，使用mutable关键字后可变
+    auto resultFunc = [arg] (int param) -> int {
+        if (param > 0){
+            return arg + param;
+        } else 
+            return arg - param;
+        
+    };
+    cout <<  "lambda: " << func1() << endl;
+    cout <<  "lambda: " << func2() << endl;
+    cout <<  "lambda: " << resultFunc(3) << endl;
+    cout <<  "lambda: " << resultFunc(-3) << endl;
     return 0;
 }
