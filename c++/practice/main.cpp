@@ -22,6 +22,12 @@ void pure_virtual_test(Shape &arg){
     std::cout << arg.getName() << "面积：" << arg.getArea() << std::endl;
     std::cout << arg.getName() << "体积：" << arg.getVolume() << std::endl;
 }
+// lambda表达式作为函数的参数进行传递，即实现行为参数的传递
+std::string lambda_arg_func_test(std::function<std::string (int arg_1, long arg_2)> const &func, std::string name, int val_1, long val_2){
+    std::string s = func(val_1, val_2);
+    cout << "lambda_arg_func_test: " << name << " --- " << s << endl;
+    return name.append(s);
+}
 
 int main()
 {
@@ -72,7 +78,9 @@ int main()
     // lambda表达式练习
     int arg = 6;
     auto func1 = [arg] () mutable { return ++arg; };
+    auto func1_1 = [=] () mutable { return ++arg; };
     auto func2 = [&arg] () { return ++arg; };
+    auto func2_1 = [&] () { return ++arg; };
     // 返回结果是条件表达式的时候，结果类型可以自动识别，无需显示指定，其他需要
     // 和java的lambda相比，多了一个捕获列表（即方括号[arg...]）来引用所在函数中定义的局部变量
     // 捕获列表的参数默认是不可变的，使用mutable关键字后可变
@@ -87,5 +95,11 @@ int main()
     cout <<  "lambda: " << func2() << endl;
     cout <<  "lambda: " << resultFunc(3) << endl;
     cout <<  "lambda: " << resultFunc(-3) << endl;
+    // lambda表达式作为函数参数传递练习
+    auto lambda_arg_func = [=](int val_1, long val_2) -> std::string {
+        cout << "lambda_arg_func: " << arg * val_1 * val_2 << endl;
+        return " Hello World!";
+    };
+    lambda_arg_func_test(lambda_arg_func, "liufei ", 3, 6L);
     return 0;
 }
