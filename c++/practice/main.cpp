@@ -29,6 +29,18 @@ std::string lambda_arg_func_test(std::function<std::string (int arg_1, long arg_
     return name.append(s);
 }
 
+template <typename T> 
+void reference_func_test(T& param) {
+    cout << "左值引用传入值：" << param << endl;
+    param = 9;
+}
+
+template <typename T> 
+void reference_func_test_1(T&& param) {
+    cout << "右值引用传入值：" << param << endl;
+    param = 9;
+}
+
 int main()
 {
 
@@ -101,5 +113,16 @@ int main()
         return " Hello World!";
     };
     lambda_arg_func_test(lambda_arg_func, "liufei ", 3, 6L);
+
+    // 引用相关联系
+    int num = 5;
+    reference_func_test(num);
+    reference_func_test_1(5);
+    reference_func_test_1(num);
+    reference_func_test_1(std::move(num));
+    // reference_func_test_1(std::forward(22));
+    cout << "num的值为：" << num << endl;
+
+    // 主函数结束
     return 0;
 }
