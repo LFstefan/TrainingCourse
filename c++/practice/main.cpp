@@ -28,13 +28,20 @@ std::string lambda_arg_func_test(std::function<std::string (int arg_1, long arg_
     cout << "lambda_arg_func_test: " << name << " --- " << s << endl;
     return name.append(s);
 }
+std::function<std::string (int arg_1, long arg_2)> lambda_return_func_test(int value){
+    return [=](int val_1, long val_2) -> std::string {
+        cout << "lambda表达式作为函数返回值返回" << endl;
+        cout << "lambda_return_func_test: " << value * val_1 * val_2 << endl;
+        return " Hello lambda_return_func_test !";
+    };
+}
 
+// 左右值引用练习
 template <typename T> 
 void reference_func_test(T& param) {
     cout << "左值引用传入值：" << param << endl;
     param = 9;
 }
-
 template <typename T> 
 void reference_func_test_1(T&& param) {
     cout << "右值引用传入值：" << param << endl;
@@ -113,6 +120,7 @@ int main()
         return " Hello World!";
     };
     lambda_arg_func_test(lambda_arg_func, "liufei ", 3, 6L);
+    lambda_arg_func_test(lambda_return_func_test(23), "kangyaxin", 5, 9L);
 
     // 引用相关联系
     int num = 5;
