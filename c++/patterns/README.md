@@ -1,0 +1,1 @@
+g++ *.cpp -o result -std=c++11
