@@ -5,6 +5,7 @@
 // #include "sale_item.hpp"
 #include "VirtualClazz.hpp"
 #include "PureVirtualClazz.hpp"
+#include "CDestructor.hpp"
 
 using namespace std;
 
@@ -130,6 +131,12 @@ int main()
     reference_func_test_1(std::move(num));
     // reference_func_test_1(std::forward(22));
     cout << "num的值为：" << num << endl;
+
+    // 虚析构函数的意义
+    CDestructor* des = new CDestructor("liufei");
+    CDestructor* desDri = new CDestructoDerive("liufei", "kangyaxin");
+    delete des;
+    delete desDri;
 
     // 主函数结束
     return 0;
