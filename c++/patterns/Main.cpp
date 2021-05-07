@@ -1,5 +1,6 @@
 #include "Singleton.h"
 #include "BridgePattern.hpp"
+#include "AdaptPattern.hpp"
 
 int main(int argc, char const *argv[]){
 
@@ -17,12 +18,19 @@ int main(int argc, char const *argv[]){
     // std::cout << s->name << std::endl;
 
     // 桥接模式
-    BookAuthor *author = new BookAuthor("liufei");
-    RefinedAbstract *abs = new RefinedAbstract();
-    abs->planBook({"设计模式","货币战争","金融理财"}, author);
-    abs->releaseBook();
-    delete abs;
-    delete author;
+    // BookAuthor *author = new BookAuthor("liufei");
+    // RefinedAbstract *abs = new RefinedAbstract();
+    // abs->planBook({"设计模式","货币战争","金融理财"}, author);
+    // abs->releaseBook();
+    // delete abs;
+    // delete author;
+
+    // 适配器模式
+    Zhiliudian *zhi = new ZhiliudianProvider();
+    Jiaoliudian *jiao = new Adapter();
+    jiao->providerPower(zhi);
+    delete jiao;
+    delete zhi;
 
     return 0;
 }
